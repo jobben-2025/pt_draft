@@ -10,7 +10,8 @@ import { siteConfig } from '../site.config';
   <!-- Hero -->
   <section class="section bg-gradient-to-br from-white to-gray-light">
     <div class="container-narrow">
-      <div class="max-w-3xl">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
         <p class="subheadline mb-2">Über uns</p>
         <h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">
           PureTech Water GmbH
@@ -19,6 +20,15 @@ import { siteConfig } from '../site.config';
           Ein Berliner Unternehmen mit dem Anspruch, Wasseraufbereitung durch
           Innovation, Qualität und Nachhaltigkeit neu zu definieren.
         </p>
+      </div>
+      <div class="aspect-square rounded-2xl bg-gray-100 overflow-hidden">
+        <img
+          src="/images/ueber-uns.webp"
+          alt="PureTech Water — Wasserfiltersysteme aus Berlin"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+      </div>
       </div>
     </div>
   </section>

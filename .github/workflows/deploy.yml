@@ -1,14 +1,22 @@
-name: Build & Deploy to checkdomain.de
+name: Build & Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,25 +31,22 @@ jobs:
         run: npm ci
 
       - name: Build Astro Site
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: npm run build
 
-      - name: Deploy to checkdomain.de via FTP
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          sudo apt-get install -y -qq lftp
-          lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<EOF
-          set ftp:ssl-allow yes
-          set ftp:ssl-force no
-          mirror --reverse --delete --no-perms --exclude-glob .cagefs --exclude-glob .cl.selector --verbose ./dist/ /beispiel-arzt.de/
-          chmod 755 /beispiel-arzt.de
-          quit
-          EOF
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
-      - name: Wait for deployment propagation
-        run: sleep 30
-
-      - name: Post-Deploy Link-Check
-        run: node scripts/check-links.mjs
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

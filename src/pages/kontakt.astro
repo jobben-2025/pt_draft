@@ -10,7 +10,8 @@ import { siteConfig } from '../site.config';
   <!-- Hero -->
   <section class="section bg-gradient-to-br from-white to-gray-light">
     <div class="container-narrow">
-      <div class="text-center">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="text-center md:text-left">
         <p class="subheadline mb-4">Sprechen Sie uns an</p>
         <h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">
           <span class="text-accent">Kontakt</span> aufnehmen
@@ -19,6 +20,15 @@ import { siteConfig } from '../site.config';
           Sie haben Fragen zu unseren Wasserfiltersystemen oder wünschen eine
           individuelle Beratung? Wir freuen uns auf Ihre Nachricht.
         </p>
+        </div>
+        <div class="rounded-2xl bg-gray-100 aspect-[4/3] overflow-hidden">
+          <img
+            src="/images/kontakt.webp"
+            alt="PureTech Water — Kontaktieren Sie uns"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
       </div>
     </div>
   </section>
