@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../site.config';
+import { getCollection } from 'astro:content';
+
+const leistungen = (await getCollection('leistungen')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Layout
+  title="PureTech Water — Innovative Wasserfiltersysteme für höchste Ansprüche"
+  description={siteConfig.seo.defaultDescription}
+>
+  <!-- Hero Section -->
+  <section class="relative bg-dark text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0A1E32] via-dark to-[#0E6BA8]/20"></div>
+    <div class="relative section">
+      <div class="container-narrow text-center">
+        <p class="subheadline mb-6 text-accent">Von der Entwicklung bis zur Produktion</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Innovative Wasserfiltersysteme<br />
+          <span class="text-accent">für höchste Ansprüche</span>
+        </h1>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
+          Innovation, Qualität und Nachhaltigkeit — PureTech Water entwickelt und produziert
+          moderne Filtrationssysteme für sauberes Wasser in Privathaushalten und Industrie.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
+          <a href="/leistungen/" class="btn-outline border-white/30 text-white hover:bg-white/10">Leistungen ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP-Leiste -->
+  <section class="py-16 border-b border-gray-100">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-dark mb-2">Innovation</h3>
+          <p class="text-gray-muted text-sm">Eigene Forschung und Entwicklung moderner Filtrationstechnologien in Berlin.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-dark mb-2">Qualität</h3>
+          <p class="text-gray-muted text-sm">Strenge Qualitätskontrolle vom Prototyp bis zur Serienproduktion — Made in Germany.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-dark mb-2">Nachhaltigkeit</h3>
+          <p class="text-gray-muted text-sm">Ressourcenschonende Systeme für eine nachhaltige Wasseraufbereitung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Über uns Teaser -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="grid md:grid-cols-5 gap-12 items-start">
+        <div class="md:col-span-3">
+          <p class="subheadline mb-4">Über PureTech Water</p>
+          <h2 class="text-3xl font-bold mb-6">Wasseraufbereitung aus Berlin</h2>
+          <div class="space-y-4 text-gray-muted text-lg">
+            <p>
+              Die PureTech Water GmbH ist ein Berliner Unternehmen, das sich auf die
+              Entwicklung und den Vertrieb innovativer Wasserfiltersysteme spezialisiert hat.
+              Von der ersten Idee über die technologische Entwicklung bis hin zur
+              Serienproduktion — bei uns kommt alles aus einer Hand.
+            </p>
+            <p>
+              <a href="/ueber-uns/" class="link">Mehr über uns erfahren &rarr;</a>
+            </p>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="bg-gray-light rounded-2xl p-8">
+            <h3 class="font-semibold text-dark mb-4">Auf einen Blick</h3>
+            <ul class="space-y-3 text-sm text-gray-muted">
+              <li class="flex items-start gap-2">
+                <span class="text-accent font-bold mt-0.5">&#10003;</span>
+                Hersteller und Entwickler
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-accent font-bold mt-0.5">&#10003;</span>
+                Standort: Berlin
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-accent font-bold mt-0.5">&#10003;</span>
+                Direktvertrieb ohne Zwischenhändler
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-accent font-bold mt-0.5">&#10003;</span>
+                B2B- und Endkundenberatung
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen-Preview -->
+  <section class="section bg-gray-light">
+    <div class="container-wide">
+      <p class="subheadline text-center mb-4">Unsere Geschäftsbereiche</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        Leistungen
+      </h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {leistungen.map((l) => (
+          <a href={`/leistungen/${l.slug}/`} class="card group">
+            <h3 class="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">{l.data.title}</h3>
+            <p class="text-gray-muted text-sm">{l.data.description}</p>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/leistungen/" class="link">Alle Leistungen ansehen &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA-Banner -->
+  <section class="section bg-dark text-white">
+    <div class="container-narrow text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+        Bereit für sauberes Wasser?
+      </h2>
+      <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+        Sprechen Sie uns an — wir beraten Sie gerne zu unseren Wasserfiltersystemen
+        und finden die passende Lösung für Ihre Anforderungen.
+      </p>
+      <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </section>
+</Layout>

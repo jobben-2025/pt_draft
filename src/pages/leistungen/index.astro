@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { siteConfig } from '../../site.config';
+import { getCollection } from 'astro:content';
+
+const leistungen = (await getCollection('leistungen')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Layout
+  title="Leistungen — PureTech Water GmbH"
+  description={`Unsere Leistungen: ${leistungen.map(l => l.data.title).join(', ')}. Innovative Wasserfiltersysteme von der Entwicklung bis zum Kunden.`}
+>
+  <!-- Hero -->
+  <section class="section bg-gradient-to-br from-white to-gray-light">
+    <div class="container-narrow">
+      <p class="subheadline mb-6">Unsere Geschäftsbereiche</p>
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-8">
+        Unsere <span class="text-accent">Leistungen</span>
+      </h1>
+      <p class="text-lg text-gray-muted max-w-2xl">
+        Von der Entwicklung über die Produktion bis zum Vertrieb und zur Beratung —
+        PureTech Water bietet das gesamte Spektrum der Wasseraufbereitung.
+      </p>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="section">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {leistungen.map((l) => (
+          <a href={`/leistungen/${l.slug}/`} class="group block">
+            <div class="rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3] mb-4">
+              <img
+                src={l.data.image}
+                alt={l.data.image_alt}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <h2 class="text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
+              {l.data.title}
+            </h2>
+            <p class="text-gray-muted text-sm">{l.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Prozess -->
+  <section class="section bg-gray-light">
+    <div class="container-narrow">
+      <p class="subheadline text-center mb-4">Unser Prozess</p>
+      <h2 class="text-3xl font-bold text-center mb-12">Von der Idee zum Produkt</h2>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">1</div>
+          <h3 class="font-semibold text-dark mb-2">Analyse</h3>
+          <p class="text-gray-muted text-sm">Wasserqualität prüfen und Anforderungen ermitteln</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">2</div>
+          <h3 class="font-semibold text-dark mb-2">Entwicklung</h3>
+          <p class="text-gray-muted text-sm">Maßgeschneiderte Filtrationslösung konzipieren</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">3</div>
+          <h3 class="font-semibold text-dark mb-2">Produktion</h3>
+          <p class="text-gray-muted text-sm">Qualitätskontrollierte Fertigung in Deutschland</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">4</div>
+          <h3 class="font-semibold text-dark mb-2">Lieferung</h3>
+          <p class="text-gray-muted text-sm">Installation, Einweisung und laufender Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-dark text-white">
+    <div class="container-narrow text-center">
+      <h2 class="text-3xl font-bold mb-6 text-white">Fragen zu unseren Leistungen?</h2>
+      <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+        Wir beraten Sie gerne — persönlich, kompetent und unverbindlich.
+      </p>
+      <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </section>
+</Layout>
