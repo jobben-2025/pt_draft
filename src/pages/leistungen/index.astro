@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { siteConfig } from '../../site.config';
 import { getCollection } from 'astro:content';
+import { basePath } from '../../lib/utils';
 
 const leistungen = (await getCollection('leistungen')).sort(
   (a, b) => a.data.order - b.data.order
@@ -31,10 +32,10 @@ const leistungen = (await getCollection('leistungen')).sort(
     <div class="container-wide">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {leistungen.map((l) => (
-          <a href={`/leistungen/${l.slug}/`} class="group block">
+          <a href={basePath(`/leistungen/${l.slug}/`)} class="group block">
             <div class="rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3] mb-4">
               <img
-                src={l.data.image}
+                src={basePath(l.data.image)}
                 alt={l.data.image_alt}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
@@ -87,7 +88,7 @@ const leistungen = (await getCollection('leistungen')).sort(
       <p class="text-gray-400 mb-8 max-w-xl mx-auto">
         Wir beraten Sie gerne — persönlich, kompetent und unverbindlich.
       </p>
-      <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
+      <a href={basePath("/kontakt/")} class="btn-primary">Kontakt aufnehmen</a>
     </div>
   </section>
 </Layout>

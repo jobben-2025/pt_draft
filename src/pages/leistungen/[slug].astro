@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { siteConfig } from '../../site.config';
 import { getCollection } from 'astro:content';
+import { basePath } from '../../lib/utils';
 
 export async function getStaticPaths() {
   const leistungen = await getCollection('leistungen');
@@ -23,7 +24,7 @@ const { Content } = await entry.render();
   <section class="relative">
     <div class="w-full h-64 md:h-80 bg-gray-100 overflow-hidden">
       <img
-        src={entry.data.image}
+        src={basePath(entry.data.image)}
         alt={entry.data.image_alt}
         class="w-full h-full object-cover"
         loading="eager"
@@ -34,7 +35,7 @@ const { Content } = await entry.render();
   <!-- Inhalt -->
   <section class="section">
     <div class="container-narrow">
-      <a href="/leistungen/" class="text-accent text-sm hover:underline mb-6 inline-block">&larr; Alle Leistungen</a>
+      <a href={basePath("/leistungen/")} class="text-accent text-sm hover:underline mb-6 inline-block">&larr; Alle Leistungen</a>
       <h1 class="text-4xl md:text-5xl font-bold mb-8">{entry.data.title}</h1>
 
       <div class="prose prose-lg max-w-none text-gray-muted
@@ -51,8 +52,8 @@ const { Content } = await entry.render();
       <!-- CTA -->
       <div class="mt-12 pt-8 border-t border-gray-200">
         <div class="flex flex-col sm:flex-row gap-4 items-center">
-          <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
-          <a href="/leistungen/" class="btn-outline">Alle Leistungen</a>
+          <a href={basePath("/kontakt/")} class="btn-primary">Kontakt aufnehmen</a>
+          <a href={basePath("/leistungen/")} class="btn-outline">Alle Leistungen</a>
         </div>
       </div>
     </div>

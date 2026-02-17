@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../site.config';
 import { getCollection } from 'astro:content';
+import { basePath } from '../lib/utils';
 
 const leistungen = (await getCollection('leistungen')).sort(
   (a, b) => a.data.order - b.data.order
@@ -15,7 +16,7 @@ const leistungen = (await getCollection('leistungen')).sort(
   <!-- Hero Section -->
   <section class="relative bg-dark text-white overflow-hidden">
     <img
-      src="/images/hero-alt.webp"
+      src={basePath("/images/hero-alt.webp")}
       alt="Wasserfiltertechnologie — sauberes Wasser für höchste Ansprüche"
       class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
@@ -33,8 +34,8 @@ const leistungen = (await getCollection('leistungen')).sort(
           moderne Filtrationssysteme für sauberes Wasser in Privathaushalten und Industrie.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
-          <a href="/leistungen/" class="btn-outline border-white/30 text-white hover:bg-white/10">Leistungen ansehen</a>
+          <a href={basePath("/kontakt/")} class="btn-primary">Kontakt aufnehmen</a>
+          <a href={basePath("/leistungen/")} class="btn-outline border-white/30 text-white hover:bg-white/10">Leistungen ansehen</a>
         </div>
       </div>
     </div>
@@ -90,7 +91,7 @@ const leistungen = (await getCollection('leistungen')).sort(
               Serienproduktion — bei uns kommt alles aus einer Hand.
             </p>
             <p>
-              <a href="/ueber-uns/" class="link">Mehr über uns erfahren &rarr;</a>
+              <a href={basePath("/ueber-uns/")} class="link">Mehr über uns erfahren &rarr;</a>
             </p>
           </div>
         </div>
@@ -130,14 +131,14 @@ const leistungen = (await getCollection('leistungen')).sort(
       </h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {leistungen.map((l) => (
-          <a href={`/leistungen/${l.slug}/`} class="card group">
+          <a href={basePath(`/leistungen/${l.slug}/`)} class="card group">
             <h3 class="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">{l.data.title}</h3>
             <p class="text-gray-muted text-sm">{l.data.description}</p>
           </a>
         ))}
       </div>
       <div class="text-center mt-10">
-        <a href="/leistungen/" class="link">Alle Leistungen ansehen &rarr;</a>
+        <a href={basePath("/leistungen/")} class="link">Alle Leistungen ansehen &rarr;</a>
       </div>
     </div>
   </section>
@@ -152,7 +153,7 @@ const leistungen = (await getCollection('leistungen')).sort(
         Sprechen Sie uns an — wir beraten Sie gerne zu unseren Wasserfiltersystemen
         und finden die passende Lösung für Ihre Anforderungen.
       </p>
-      <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
+      <a href={basePath("/kontakt/")} class="btn-primary">Kontakt aufnehmen</a>
     </div>
   </section>
 </Layout>

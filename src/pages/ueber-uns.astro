@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../site.config';
+import { basePath } from '../lib/utils';
 ---
 
 <Layout
@@ -23,7 +24,7 @@ import { siteConfig } from '../site.config';
       </div>
       <div class="aspect-square rounded-2xl bg-gray-100 overflow-hidden">
         <img
-          src="/images/ueber-uns.webp"
+          src={basePath("/images/ueber-uns.webp")}
           alt="PureTech Water — Wasserfiltersysteme aus Berlin"
           class="w-full h-full object-cover"
           loading="eager"
@@ -141,7 +142,7 @@ import { siteConfig } from '../site.config';
         Sie möchten mehr über PureTech Water erfahren oder haben Fragen
         zu unseren Produkten? Wir freuen uns auf Ihre Nachricht.
       </p>
-      <a href="/kontakt/" class="btn-primary">Kontakt aufnehmen</a>
+      <a href={basePath("/kontakt/")} class="btn-primary">Kontakt aufnehmen</a>
     </div>
   </section>
 </Layout>

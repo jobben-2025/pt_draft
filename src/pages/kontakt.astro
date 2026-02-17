@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../site.config';
+import { basePath } from '../lib/utils';
 ---
 
 <Layout
@@ -23,7 +24,7 @@ import { siteConfig } from '../site.config';
         </div>
         <div class="rounded-2xl bg-gray-100 aspect-[4/3] overflow-hidden">
           <img
-            src="/images/kontakt.webp"
+            src={basePath("/images/kontakt.webp")}
             alt="PureTech Water — Kontaktieren Sie uns"
             class="w-full h-full object-cover"
             loading="eager"
