@@ -25,12 +25,12 @@ const isActive = (href: string) => {
   <div class="max-w-6xl mx-auto px-6 py-4">
     <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a href={basePath("/")} class="flex items-center gap-0.5">
+      <a href={basePath("/")} class="flex items-center">
         {logoParts.length > 1 ? (
           <>
-            <span class="text-xl font-bold text-dark">{logoParts[0]}</span>
+            <span class="text-xl font-bold text-dark">{logoParts[0].trimEnd()}</span>
             <span class="text-xl font-bold text-accent">{accentChar}</span>
-            <span class="text-xl font-bold text-dark ml-0.5">{logoParts[1]}</span>
+            <span class="text-xl font-bold text-dark">{logoParts[1]}</span>
           </>
         ) : (
           <span class="text-xl font-bold text-dark">{logoText}</span>

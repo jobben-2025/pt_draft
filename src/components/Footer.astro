@@ -16,7 +16,7 @@ const logoParts = logoText.split(accentChar);
         <a href={basePath("/")} class="text-xl font-bold">
           {logoParts.length > 1 ? (
             <>
-              <span class="text-dark">{logoParts[0]}</span>
+              <span class="text-dark">{logoParts[0].trimEnd()}</span>
               <span class="text-accent">{accentChar}</span>
               <span class="text-dark">{logoParts[1]}</span>
             </>
